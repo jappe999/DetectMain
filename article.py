@@ -9,6 +9,7 @@ class Article:
 
     def __init__(self, args=None):
         Article.init_data()
+        # Database is not in use at the time...
         if not args == None:
             username = args['database']['user']
             password = args['database']['pass']
@@ -21,6 +22,8 @@ class Article:
 
     @classmethod
     def init_data(cls):
+        # Try to make the Data directory
+        # if is doesn't already exist
         try: os.mkdir(Article.path_to_dir+'/Data')
         except: pass
 
@@ -73,6 +76,7 @@ class Article:
 
     @classmethod
     def get_selector(cls, element):
+        # It works.. Don't mess with it
         elem_id = ''
         elem_class = ''
         elem_selector = element.name
