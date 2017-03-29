@@ -92,7 +92,6 @@ class Article:
 
     @classmethod
     def check_lines(cls, html, rules):
-        # This is a wtf method
         response = []
         html = BeautifulSoup(html, 'html5lib').findAll()
 
