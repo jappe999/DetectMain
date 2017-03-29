@@ -19,6 +19,11 @@ class Article:
             print('Cannot make a database connection...')
             self.db_is_usable = False
 
+    @classmethod
+    def get_domain(cls, url):
+        parsed_url = urlparse(url)
+        return str(parsed_url.netloc)
+
     """
         Returns a stripped version of the actual page
     """
@@ -37,11 +42,7 @@ class Article:
 
     @classmethod
     def get_rules(cls, file_name):
-        file_content = "".join(Article.get_file(file_name))
-        if file_content == "":
-            return []
-
-        return response
+        return Article.get_file(file_name)
 
     """
         Strips the most useless tags from the page
@@ -57,7 +58,7 @@ class Article:
             if tag[0] != '#':
                 [s.extract() for s in html(tag)]
 
-        return html
+        return [str(tag) for tag in html]
 
     """
         Returns an array of lines with
@@ -98,7 +99,7 @@ class Article:
         html = Article.get_page(url)
 
         print("Checking url:", url)
-        return Article.strip(html, rules)
+        return Article.strip_tags(html, rules)
 
 # Tests!!
 if __name__ == '__main__':
