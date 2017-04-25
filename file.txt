@@ -1,3 +1,6 @@
 line 1
+<<<<<<< HEAD
 line 2
 line 3
+=======
+>>>>>>> parent of 5303b49... Added line 2 to file.txt
